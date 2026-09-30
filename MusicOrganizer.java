@@ -49,12 +49,12 @@ public class MusicOrganizer
             System.out.println("Error: Index " + index + " is out of range. Valid range is 0 to " + (files.size() - 1));
         }
     }
-    public boolean validIndex(int index) 
+    public boolean validIndex(int index) // question 2
     {
         return index >= 0 && index < files.size();
     }
     
-    public void listFile(int index)
+    public void listFile(int index) // question 3
     {
         if (validIndex(index)) {
             String filename = files.get(index);
@@ -66,19 +66,19 @@ public class MusicOrganizer
      * Remove a file from the collection.
      * @param index The index of the file to be removed.
      */
-    public void removeFile(int index)
+    public void removeFile(int index) // question 4
     {
         if (validIndex(index)) {
             files.remove(index);
         }
     }
-    public void listAllFiles()
+    public void listAllFiles() // question 5
     {
         for (String filename : files) {
             System.out.println(filename);
         }
     }
-    public void listWithIndex()
+    public void listWithIndex() // question 6
     {
         int position = 0;
         for (String filename : files) {
@@ -87,7 +87,7 @@ public class MusicOrganizer
         }
     }
     
-    public void listMatching(String searchString)
+    public void listMatching(String searchString) // question 7-10
     {
         boolean found = false;
         for (String filename : files) {
