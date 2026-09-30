@@ -41,9 +41,22 @@ public class MusicOrganizer
      * List a file from the collection.
      * @param index The index of the file to be listed.
      */
+    public void checkIndex(int index) // question 1
+    {
+        if (files.isEmpty()) {
+            System.out.println("The collection is empty. There are no valid indices.");
+        } else if (index < 0 || index >= files.size()) {
+            System.out.println("Error: Index " + index + " is out of range. Valid range is 0 to " + (files.size() - 1));
+        }
+    }
+    public boolean validIndex(int index) 
+    {
+        return index >= 0 && index < files.size();
+    }
+    
     public void listFile(int index)
     {
-        if(index >= 0 && index < files.size()) {
+        if (validIndex(index)) {
             String filename = files.get(index);
             System.out.println(filename);
         }
@@ -55,8 +68,36 @@ public class MusicOrganizer
      */
     public void removeFile(int index)
     {
-        if(index >= 0 && index < files.size()) {
+        if (validIndex(index)) {
             files.remove(index);
+        }
+    }
+    public void listAllFiles()
+    {
+        for (String filename : files) {
+            System.out.println(filename);
+        }
+    }
+    public void listWithIndex()
+    {
+        int position = 0;
+        for (String filename : files) {
+            System.out.println(position + ":" + filename);
+            position++;
+        }
+    }
+    
+    public void listMatching(String searchString)
+    {
+        boolean found = false;
+        for (String filename : files) {
+            if (filename.contains(searchString)) {
+                System.out.println(filename);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No matching files found for " + searchString);
         }
     }
 }
